@@ -23,7 +23,6 @@ const HDWalletProvider = require('@truffle/hdwallet-provider');
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
 const mnemonic = 'fit stand already leader lake history fall cover web mandate uphold teach';
-
 module.exports = {
   /**
    * Networks define how you connect to your ethereum client and let you set the
@@ -59,15 +58,25 @@ module.exports = {
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
     ropsten: {
-    provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/af63db23275f49ef8b3e8b55e98ca65d`),
+    provider: () => new HDWalletProvider(mnemonic, "https://ropsten.infura.io/v3/af63db23275f49ef8b3e8b55e98ca65d"),
     network_id: 3,       // Ropsten's id
     gas: 5500000,        // Ropsten has a lower block limit than mainnet
-    confirmations: 1,    // # of confs to wait between deployments. (default: 0)
-    timeoutBlocks: 5,  // # of blocks before a deployment times out  (minimum/default: 50)
+    confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+    timeoutBlocks: 2,  // # of blocks before a deployment times out  (minimum/default: 50)
     skipDryRun: true,     // Skip dry run before migrations? (default: false for public nets )
-    from: "0x653A48939074AD27afBd28560642bBeCf9d8E1d7",
-    gasPrice: 30000000
-    },
+    // from: "0x653A48939074AD27afBd28560642bBeCf9d8E1d7",
+    // gasPrice: 30000000
+    },  
+  
+    rinkeby: {
+      provider: function() { 
+       return new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/8df36a84911b4f208303ccd8a733b90e");
+      },
+      network_id: 4,
+      gas: 4500000,
+      gasPrice: 10000000000,
+  },
+
     // Useful for private networks
     // private: {
     // provider: () => new HDWalletProvider(mnemonic, `https://network.io`),
